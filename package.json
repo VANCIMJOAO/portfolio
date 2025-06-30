@@ -1,0 +1,25 @@
+{
+  "name": "joao-vancim-portfolio",
+  "version": "1.0.0",
+  "description": "Portfolio pessoal de João Vancim - Full Stack Developer & Data Scientist",
+  "main": "index.html",
+  "scripts": {
+    "build-css": "tailwindcss -i ./src/input.css -o ./assets/tailwind.css --minify",
+    "watch-css": "tailwindcss -i ./src/input.css -o ./assets/tailwind.css --watch",
+    "dev": "python -m http.server 8000",
+    "build": "npm run build-css"
+  },
+  "keywords": [
+    "portfolio",
+    "full-stack",
+    "data-science",
+    "react",
+    "nodejs",
+    "python"
+  ],
+  "author": "João Vancim",
+  "license": "MIT",
+  "devDependencies": {
+    "tailwindcss": "^3.4.0"
+  }
+}

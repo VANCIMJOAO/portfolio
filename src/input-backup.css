@@ -1,0 +1,193 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Dark mode transitions */
+html {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Dark mode styles for custom elements */
+.dark .bg-\[#f3efe7\] {
+  @apply bg-gray-900;
+}
+
+.dark .text-\[#676059\] {
+  @apply text-gray-300;
+}
+
+.dark .text-\[#2d2926\] {
+  @apply text-gray-100;
+}
+
+.dark .bg-\[#e3e2d7\] {
+  @apply bg-gray-800;
+}
+
+.dark header {
+  @apply bg-gray-900/80;
+}
+
+.dark .loading-screen {
+  @apply bg-gray-900;
+}
+
+/* Fontes customizadas */
+@font-face {
+  font-family: 'Naville';
+  src: url('../fonts/Navillè-Regular.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Naville';
+  src: url('../fonts/Navillè-Bold.otf') format('opentype');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Naville';
+  src: url('../fonts/Navillè-Light.otf') format('opentype');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Scroll indicator */
+.scroll-indicator {
+  @apply fixed top-0 left-0 h-1 z-50;
+  background: linear-gradient(to right, #3b82f6, #8b5cf6);
+  transition: width 0.25s ease;
+}
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+/* Hover effects */
+.project-card:hover {
+  transform: translateY(-5px) scale(1.02);
+}
+
+/* Loading improvements */
+.loading-screen {
+  animation: fadeOut 0.5s ease-out 1.2s forwards;
+}olor 0.3s ease, color 0.3s ease;
+}
+
+/* Dark mode styles for custom elements */
+.dark .bg-\[#f3efe7\] {
+  @apply bg-gray-900;
+}
+
+.dark .text-\[#676059\] {
+  @apply text-gray-300;
+}
+
+.dark .text-\[#2d2926\] {
+  @apply text-gray-100;
+}
+
+.dark .bg-\[#e3e2d7\] {
+  @apply bg-gray-800;
+}
+
+.dark header {
+  @apply bg-gray-900/80;
+}
+
+.dark .loading-screen {
+  @apply bg-gray-900;
+}
+
+/* Fontes customizadas */
+@font-face {
+  font-family: 'Naville';
+  src: url('../fonts/Navillè-Regular.otf') format('truetype');
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Naville';
+  src: url('../fonts/Navillè-Bold.otf') format('truetype');
+  font-weight: 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Naville';
+  src: url('../fonts/Navillè-Medium.otf') format('truetype');
+  font-weight: 500;
+  font-display: swap;
+}
+
+/* Componentes customizados */
+@layer components {
+  .btn-primary {
+    @apply px-8 py-3 rounded-full bg-blue-600 hover:bg-blue-500 text-white font-semibold transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2;
+  }
+  
+  .card {
+    @apply bg-gray-800 rounded-xl p-6 transform transition-all duration-300 hover:scale-105 hover:shadow-2xl;
+  }
+  
+  .section-title {
+    @apply text-[5vw] lg:text-[4rem] font-extrabold leading-tight text-primary-900;
+  }
+}
+
+/* Utilities customizados */
+@layer utilities {
+  .text-gradient {
+    @apply bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent;
+  }
+  
+  .animate-char {
+    @apply inline-block opacity-0 translate-y-10;
+    animation: riseUp 0.8s ease forwards;
+  }
+}
+
+/* Animações */
+html, body {
+  @apply m-0 p-0 overflow-y-auto;
+  scroll-behavior: smooth;
+}
+
+.fade-section {
+  @apply fixed top-0 left-0 w-full h-screen pointer-events-auto;
+  transition: transform 1.4s ease, opacity 1.4s ease;
+}
+
+.loading-screen {
+  @apply fixed top-0 left-0 w-full h-full bg-gray-900 z-50 flex items-end justify-center;
+  transition: transform 1.4s ease, opacity 1.4s ease;
+}
+
+.loading-screen::after {
+  content: "";
+  @apply block w-full h-full bg-primary-50;
+  transform: translateY(100%);
+  animation: riseUpCover 1.6s ease forwards;
+}
+
+.project-card {
+  @apply relative overflow-hidden;
+  min-height: 300px;
+}
+
+.preview-overlay {
+  @apply backdrop-blur-sm;
+  transition: opacity 0.5s ease;
+}
+
+.scroll-indicator {
+  @apply fixed top-0 left-0 h-1 z-50;
+  background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+  transition: width 0.1s ease;
+}

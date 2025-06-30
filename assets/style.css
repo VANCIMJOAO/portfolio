@@ -1,0 +1,57 @@
+@font-face {
+  font-family: 'Naville';
+  src: url('../fonts/Navillè-Regular.otf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Naville';
+  src: url('../fonts//Navillè-Bold.otf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Naville';
+  src: url('../fonts/Navillè-Medium.otf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+}
+.font-naville {
+  font-family: 'Naville', sans-serif;
+}
+
+.reveal {
+  opacity: 0;
+  transition: opacity 1s ease 0.6s;
+}
+.reveal.visible {
+  opacity: 1;
+}
+.fade-in-top {
+  opacity: 0;
+  transform: translateY(-30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.fade-in-top.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Animação das letras */
+.char {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(40px);
+  animation: riseUp 0.8s ease forwards;
+}
+@keyframes riseUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+#reveal-bar {
+  border-top-left-radius: 100% 40px;
+  border-top-right-radius: 100% 40px;
+}
