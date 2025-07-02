@@ -61,16 +61,6 @@
       <span class="text-lg font-medium">Full Stack Developer &amp; Data Scientist</span>
       
       <div class="flex items-center gap-4">
-        <!-- Dark mode toggle -->
-        <button id="dark-mode-toggle" class="p-2 rounded-lg hover:bg-gray-200 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-400" aria-label="Toggle dark mode">
-          <svg id="sun-icon" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-            <path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clip-rule="evenodd"></path>
-          </svg>
-          <svg id="moon-icon" class="w-5 h-5 hidden" fill="currentColor" viewBox="0 0 20 20">
-            <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
-          </svg>
-        </button>
-        
         <!-- Mobile menu button -->
         <button id="mobile-menu-btn" class="md:hidden p-2 rounded-lg hover:bg-gray-200 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-400">
           <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -85,7 +75,6 @@
         <a href="#sobre" class="font-semibold hover:text-blue-600 cursor-pointer transition-colors focus:outline-none focus:ring-2 focus:ring-blue-400 rounded">Sobre</a>
         <a href="#projetos" class="font-semibold hover:text-blue-600 cursor-pointer transition-colors focus:outline-none focus:ring-2 focus:ring-blue-400 rounded">Projetos</a>
         <a href="#certificados" class="font-semibold hover:text-blue-600 cursor-pointer transition-colors focus:outline-none focus:ring-2 focus:ring-blue-400 rounded">Certificados</a>
-        <a href="#faq" class="font-semibold hover:text-blue-600 cursor-pointer transition-colors focus:outline-none focus:ring-2 focus:ring-blue-400 rounded">FAQ</a>
         <a href="#contato" class="font-semibold hover:text-blue-600 cursor-pointer transition-colors focus:outline-none focus:ring-2 focus:ring-blue-400 rounded">Contato</a>
       </nav>
       
@@ -96,7 +85,6 @@
           <a href="#sobre" class="font-semibold hover:text-blue-600 cursor-pointer transition-colors py-2 focus:outline-none focus:ring-2 focus:ring-blue-400 rounded">Sobre</a>
           <a href="#projetos" class="font-semibold hover:text-blue-600 cursor-pointer transition-colors py-2 focus:outline-none focus:ring-2 focus:ring-blue-400 rounded">Projetos</a>
           <a href="#certificados" class="font-semibold hover:text-blue-600 cursor-pointer transition-colors py-2 focus:outline-none focus:ring-2 focus:ring-blue-400 rounded">Certificados</a>
-          <a href="#faq" class="font-semibold hover:text-blue-600 cursor-pointer transition-colors py-2 focus:outline-none focus:ring-2 focus:ring-blue-400 rounded">FAQ</a>
           <a href="#contato" class="font-semibold hover:text-blue-600 cursor-pointer transition-colors py-2 focus:outline-none focus:ring-2 focus:ring-blue-400 rounded">Contato</a>
         </div>
       </nav>
@@ -1721,57 +1709,6 @@ document.addEventListener('click', (e) => {
   }
 });
 
-// Dark mode functionality
-const darkModeToggle = document.getElementById('dark-mode-toggle');
-const sunIcon = document.getElementById('sun-icon');
-const moonIcon = document.getElementById('moon-icon');
-const html = document.documentElement;
-
-// Check for saved dark mode preference or default to light mode
-const currentTheme = localStorage.getItem('theme') || 'light';
-
-// Apply the theme on page load
-if (currentTheme === 'dark') {
-  html.classList.add('dark');
-  sunIcon.classList.add('hidden');
-  moonIcon.classList.remove('hidden');
-} else {
-  html.classList.remove('dark');
-  sunIcon.classList.remove('hidden');
-  moonIcon.classList.add('hidden');
-}
-
-// Toggle dark mode
-darkModeToggle.addEventListener('click', () => {
-  html.classList.toggle('dark');
-  
-  if (html.classList.contains('dark')) {
-    localStorage.setItem('theme', 'dark');
-    sunIcon.classList.add('hidden');
-    moonIcon.classList.remove('hidden');
-    
-    // Track dark mode activation
-    if (typeof gtag !== 'undefined') {
-      gtag('event', 'dark_mode_toggle', {
-        event_category: 'UI',
-        event_label: 'Dark Mode Activated'
-      });
-    }
-  } else {
-    localStorage.setItem('theme', 'light');
-    sunIcon.classList.remove('hidden');
-    moonIcon.classList.add('hidden');
-    
-    // Track light mode activation
-    if (typeof gtag !== 'undefined') {
-      gtag('event', 'light_mode_toggle', {
-        event_category: 'UI',
-        event_label: 'Light Mode Activated'
-      });
-    }
-  }
-});
-
 // Scroll progress indicator
 const scrollIndicator = document.getElementById('scroll-indicator');
 const scrollToTopBtn = document.getElementById('scroll-to-top');
@@ -1806,47 +1743,6 @@ scrollToTopBtn.addEventListener('click', () => {
       event_label: 'Scroll to Top Button'
     });
   }
-});
-
-// FAQ Accordion Functionality
-const faqItems = document.querySelectorAll('.faq-item');
-
-faqItems.forEach(item => {
-  const question = item.querySelector('.faq-question');
-  const answer = item.querySelector('.faq-answer');
-  const icon = item.querySelector('.faq-icon');
-  
-  question.addEventListener('click', () => {
-    const isOpen = !answer.classList.contains('hidden');
-    
-    // Close all other FAQ items
-    faqItems.forEach(otherItem => {
-      if (otherItem !== item) {
-        otherItem.querySelector('.faq-answer').classList.add('hidden');
-        otherItem.querySelector('.faq-icon').style.transform = 'rotate(0deg)';
-        otherItem.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
-      }
-    });
-    
-    // Toggle current item
-    if (isOpen) {
-      answer.classList.add('hidden');
-      icon.style.transform = 'rotate(0deg)';
-      question.setAttribute('aria-expanded', 'false');
-    } else {
-      answer.classList.remove('hidden');
-      icon.style.transform = 'rotate(180deg)';
-      question.setAttribute('aria-expanded', 'true');
-      
-      // Track FAQ interaction
-      if (typeof gtag !== 'undefined') {
-        gtag('event', 'faq_open', {
-          event_category: 'Engagement',
-          event_label: question.textContent.trim()
-        });
-      }
-    }
-  });
 });
 
 // Contact form functionality
@@ -1988,83 +1884,6 @@ window.addEventListener('appinstalled', (evt) => {
 });
 
 </script>
-
-<!-- Section FAQ -->
-<section id="faq" class="relative z-40 bg-[#e3e2d7] text-[#2d2926] py-20 px-0">
-  <div class="w-full max-w-screen-xl mx-auto px-10">
-    <div class="text-center mb-16">
-      <h2 class="text-[5vw] font-extrabold leading-tight text-[#2d2926]">FAQ /</h2>
-      <p class="text-sm text-gray-600 mt-2">(PERGUNTAS FREQUENTES)</p>
-    </div>
-    
-    <div class="max-w-4xl mx-auto">
-      <!-- FAQ Item 1 -->
-      <div class="faq-item bg-white rounded-xl p-6 mb-4 shadow-lg border border-gray-200">
-        <button class="faq-question w-full text-left flex items-center justify-between font-semibold text-lg text-[#2d2926] hover:text-blue-600 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-400 rounded" aria-expanded="false">
-          <span>Qual é o seu processo de desenvolvimento de projetos?</span>
-          <svg class="faq-icon w-6 h-6 transform transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-          </svg>
-        </button>
-        <div class="faq-answer hidden mt-4 text-gray-700 leading-relaxed">
-          <p>Meu processo inclui: <strong>1)</strong> Análise de requisitos e definição do escopo, <strong>2)</strong> Prototipagem e design UX/UI, <strong>3)</strong> Desenvolvimento iterativo com feedback contínuo, <strong>4)</strong> Testes rigorosos e otimização, <strong>5)</strong> Deploy e documentação completa. Uso metodologias ágeis e mantenho comunicação constante durante todo o projeto.</p>
-        </div>
-      </div>
-      
-      <!-- FAQ Item 2 -->
-      <div class="faq-item bg-white rounded-xl p-6 mb-4 shadow-lg border border-gray-200">
-        <button class="faq-question w-full text-left flex items-center justify-between font-semibold text-lg text-[#2d2926] hover:text-blue-600 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-400 rounded" aria-expanded="false">
-          <span>Quanto tempo leva para desenvolver um projeto completo?</span>
-          <svg class="faq-icon w-6 h-6 transform transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-          </svg>
-        </button>
-        <div class="faq-answer hidden mt-4 text-gray-700 leading-relaxed">
-          <p>O prazo varia conforme a complexidade: <strong>Landing Pages simples:</strong> 1-2 semanas, <strong>Sites institucionais:</strong> 3-4 semanas, <strong>E-commerce básico:</strong> 4-6 semanas, <strong>Aplicações Full Stack:</strong> 6-12 semanas, <strong>Projetos de Data Science:</strong> 4-8 semanas. Sempre apresento um cronograma detalhado após a análise inicial.</p>
-        </div>
-      </div>
-      
-      <!-- FAQ Item 3 -->
-      <div class="faq-item bg-white rounded-xl p-6 mb-4 shadow-lg border border-gray-200">
-        <button class="faq-question w-full text-left flex items-center justify-between font-semibold text-lg text-[#2d2926] hover:text-blue-600 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-400 rounded" aria-expanded="false">
-          <span>Você oferece suporte pós-entrega do projeto?</span>
-          <svg class="faq-icon w-6 h-6 transform transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-          </svg>
-        </button>
-        <div class="faq-answer hidden mt-4 text-gray-700 leading-relaxed">
-          <p>Sim! Ofereço <strong>30 dias de suporte gratuito</strong> para correções e ajustes menores. Também disponibilizo planos de manutenção mensal que incluem: atualizações de segurança, backup automático, monitoramento de performance, e pequenas modificações. Para projetos de Data Science, incluo treinamento da equipe e documentação técnica completa.</p>
-        </div>
-      </div>
-      
-      <!-- FAQ Item 4 -->
-      <div class="faq-item bg-white rounded-xl p-6 mb-4 shadow-lg border border-gray-200">
-        <button class="faq-question w-full text-left flex items-center justify-between font-semibold text-lg text-[#2d2926] hover:text-blue-600 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-400 rounded" aria-expanded="false">
-          <span>Trabalha com projetos remotos ou apenas presenciais?</span>
-          <svg class="faq-icon w-6 h-6 transform transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-          </svg>
-        </button>
-        <div class="faq-answer hidden mt-4 text-gray-700 leading-relaxed">
-          <p>Trabalho <strong>100% remotamente</strong> com clientes do Brasil e exterior. Utilizo ferramentas modernas de comunicação e gestão de projetos (Slack, Discord, Trello, GitHub) para garantir transparência total. Para projetos locais em São Paulo, também ofereço reuniões presenciais quando necessário. Tenho experiência sólida em trabalho remoto com equipes distribuídas.</p>
-        </div>
-      </div>
-      
-      <!-- FAQ Item 5 -->
-      <div class="faq-item bg-white rounded-xl p-6 mb-4 shadow-lg border border-gray-200">
-        <button class="faq-question w-full text-left flex items-center justify-between font-semibold text-lg text-[#2d2926] hover:text-blue-600 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-400 rounded" aria-expanded="false">
-          <span>Quais tecnologias você recomenda para meu projeto?</span>
-          <svg class="faq-icon w-6 h-6 transform transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-          </svg>
-        </button>
-        <div class="faq-answer hidden mt-4 text-gray-700 leading-relaxed">
-          <p>A escolha da stack tecnológica depende dos requisitos específicos: <strong>Sites/Landing Pages:</strong> Next.js + Tailwind CSS, <strong>E-commerce:</strong> Next.js + Node.js + PostgreSQL, <strong>Apps Mobile:</strong> React Native + TypeScript, <strong>Data Science:</strong> Python + Pandas + Jupyter + Dash, <strong>APIs:</strong> Node.js + Express + PostgreSQL. Sempre priorizo tecnologias modernas, escaláveis e com boa documentação.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
 
 <!-- Section Contato -->
 <section id="contato" class="relative z-40 bg-[#f3efe7] text-[#676059] py-20 px-10">
